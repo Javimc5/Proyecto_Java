@@ -131,6 +131,7 @@ public class TestConexion {
 					try {
 						String query="Insert into usuario (correo, password, Nombre, fecha_nac, num_tfno, sexo) values('"+correo+"','"+pass+"','"+nombre+"','"+fecha_nac+"',"+tlfno+","+sexo+")";
 						stm.executeUpdate(query);
+						System.out.println("Cuenta creada con exito. \n\n\n");
 					}catch(SQLException e) {
 						System.out.println("Error al crear");
 					}creado=true;
