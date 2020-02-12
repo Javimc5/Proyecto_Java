@@ -82,25 +82,29 @@ public class InicioEmpresa extends JFrame {
 		contentPane.add(passwordField);
 
 		JLabel lblNoTienesCuenta = new JLabel("No tienes cuenta?");
-		lblNoTienesCuenta.setBounds(10, 236, 92, 14);
+		lblNoTienesCuenta.setBounds(10, 236, 129, 14);
 		contentPane.add(lblNoTienesCuenta);
 
 		JButton btnRegistrate = new JButton("Registrate");
 		btnRegistrate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegistroUsuario reg = new RegistroUsuario();
-				reg.main(null);
+				RegistroEmpresa regEmp = new RegistroEmpresa();
+				regEmp.main(null);
 				frame.setVisible(false);
 			}
 		});
-		btnRegistrate.setBounds(100, 232, 89, 23);
+		btnRegistrate.setBounds(137, 232, 123, 23);
 		contentPane.add(btnRegistrate);
 
 		btnInicio = new JButton("Inicio");
 		btnInicio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					sesionEmpresa();
+					if(sesionEmpresa()) {
+						MenuBusqueda inicio=new MenuBusqueda();
+						inicio.main(null);
+						frame.setVisible(false);
+					};
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -115,7 +119,7 @@ public class InicioEmpresa extends JFrame {
 		contentPane.add(lblEmpresa);
 	}
 
-	public static void sesionEmpresa() throws SQLException {
+	public static boolean sesionEmpresa() throws SQLException {
 		Conexion conexion = new Conexion();
 		Connection cn = conexion.conectar();
 		Statement stm = cn.createStatement();
@@ -125,14 +129,16 @@ public class InicioEmpresa extends JFrame {
 		rs = stm.executeQuery("Select * from empresa where correo=" + correo);
 		if (!rs.next()) {
 			JOptionPane.showMessageDialog(null, "Correo Invalido");
+			return false;
 		} else {
 			String pass = passwordField.getText();
 			String contr = rs.getString(3);
 			if (pass.equals(contr)) {
 				JOptionPane.showMessageDialog(null, "Bienvenido " + rs.getString(5) + "\n\n\n");
-				frame.setVisible(false);
+				return true;
 			} else
 				JOptionPane.showMessageDialog(null, "Contraseña Incorrecta");
+			return false;
 		}
 
 	}

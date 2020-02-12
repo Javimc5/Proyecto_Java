@@ -15,12 +15,12 @@ import javax.swing.JPasswordField;
 public class RegistroEmpresa extends JFrame {
 
 	private JPanel contentPane;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField textField;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JPasswordField passwordField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -62,31 +62,13 @@ public class RegistroEmpresa extends JFrame {
 		lblContrasea.setBounds(10, 84, 97, 14);
 		contentPane.add(lblContrasea);
 		
-		JLabel lblNombreCompleto = new JLabel("Nombre Completo:");
-		lblNombreCompleto.setBounds(10, 112, 132, 14);
-		contentPane.add(lblNombreCompleto);
-		
-		JLabel lblFechaNacimiento = new JLabel("Fecha Nacimiento (aaaa-mm-dd):");
-		lblFechaNacimiento.setBounds(10, 143, 201, 14);
-		contentPane.add(lblFechaNacimiento);
+		JLabel lblNombreEmpresa = new JLabel("Nombre Empresa:");
+		lblNombreEmpresa.setBounds(10, 143, 132, 14);
+		contentPane.add(lblNombreEmpresa);
 		
 		JLabel lblTelefono = new JLabel("Telefono:");
 		lblTelefono.setBounds(10, 168, 74, 14);
 		contentPane.add(lblTelefono);
-		
-		JLabel lblSexo = new JLabel("Sexo:");
-		lblSexo.setBounds(10, 210, 37, 14);
-		contentPane.add(lblSexo);
-		
-		JRadioButton rdbtnHombre = new JRadioButton("Hombre");
-		buttonGroup.add(rdbtnHombre);
-		rdbtnHombre.setBounds(41, 206, 65, 23);
-		contentPane.add(rdbtnHombre);
-		
-		JRadioButton rdbtnMujer = new JRadioButton("Mujer");
-		buttonGroup.add(rdbtnMujer);
-		rdbtnMujer.setBounds(108, 206, 60, 23);
-		contentPane.add(rdbtnMujer);
 		
 		textField = new JTextField();
 		textField.setBounds(69, 56, 282, 20);
@@ -94,12 +76,12 @@ public class RegistroEmpresa extends JFrame {
 		textField.setColumns(10);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(123, 112, 225, 20);
+		textField_2.setBounds(52, 112, 225, 20);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(197, 140, 153, 20);
+		textField_3.setBounds(123, 140, 227, 20);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
@@ -109,16 +91,29 @@ public class RegistroEmpresa extends JFrame {
 		textField_4.setColumns(10);
 		
 		JButton btnCrear = new JButton("Crear");
-		btnCrear.setBounds(280, 206, 89, 23);
+		btnCrear.setBounds(315, 227, 89, 23);
 		contentPane.add(btnCrear);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(79, 81, 270, 23);
+		passwordField.setBounds(95, 81, 254, 23);
 		contentPane.add(passwordField);
 		
 		JLabel lblEmpresa = new JLabel("Empresa");
 		lblEmpresa.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		lblEmpresa.setBounds(161, 26, 101, 23);
 		contentPane.add(lblEmpresa);
+		
+		JLabel lblCif = new JLabel("CIF:");
+		lblCif.setBounds(10, 109, 57, 20);
+		contentPane.add(lblCif);
+		
+		JLabel lblNombreCompleto = new JLabel("Nombre Completo:");
+		lblNombreCompleto.setBounds(10, 193, 119, 20);
+		contentPane.add(lblNombreCompleto);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(133, 193, 191, 20);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
 	}
 }

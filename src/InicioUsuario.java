@@ -82,7 +82,7 @@ public class InicioUsuario extends JFrame {
 		contentPane.add(passwordField);
 
 		JLabel lblNoTienesCuenta = new JLabel("No tienes cuenta?");
-		lblNoTienesCuenta.setBounds(10, 236, 92, 14);
+		lblNoTienesCuenta.setBounds(10, 236, 126, 14);
 		contentPane.add(lblNoTienesCuenta);
 
 		JButton btnRegistrate = new JButton("Registrate");
@@ -93,11 +93,11 @@ public class InicioUsuario extends JFrame {
 				frame.setVisible(false);
 			}
 		});
-		btnRegistrate.setBounds(100, 232, 89, 23);
+		btnRegistrate.setBounds(117, 232, 111, 23);
 		contentPane.add(btnRegistrate);
 
 		JLabel lblEresEmpresa = new JLabel("Eres empresa?");
-		lblEresEmpresa.setBounds(238, 236, 71, 14);
+		lblEresEmpresa.setBounds(238, 236, 100, 14);
 		contentPane.add(lblEresEmpresa);
 
 		JButton btnEmpresa = new JButton("Empresa");
@@ -108,14 +108,18 @@ public class InicioUsuario extends JFrame {
 				frame.setVisible(false);
 			}
 		});
-		btnEmpresa.setBounds(319, 232, 89, 23);
+		btnEmpresa.setBounds(335, 232, 89, 23);
 		contentPane.add(btnEmpresa);
 
 		btnInicio = new JButton("Inicio");
 		btnInicio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					sesionUsuario();
+					if(sesionUsuario()) {
+						MenuBusqueda inicio=new MenuBusqueda();
+						inicio.main(null);
+						frame.setVisible(false);
+					};
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -125,7 +129,7 @@ public class InicioUsuario extends JFrame {
 		contentPane.add(btnInicio);
 	}
 
-	public static void sesionUsuario() throws SQLException {
+	public static boolean sesionUsuario() throws SQLException {
 		Conexion conexion = new Conexion();
 		Connection cn = conexion.conectar();
 		Statement stm = cn.createStatement();
@@ -135,14 +139,16 @@ public class InicioUsuario extends JFrame {
 		rs = stm.executeQuery("Select * from usuario where correo=" + correo);
 		if (!rs.next()) {
 			JOptionPane.showMessageDialog(null, "Correo Invalido");
+			return false;
 		} else {
 			String pass = passwordField.getText();
 			String contr = rs.getString(3);
 			if (pass.equals(contr)) {
 				JOptionPane.showMessageDialog(null, "Bienvenido " + rs.getString(4) + "\n\n\n");
-				frame.setVisible(false);
+				return true;
 			} else
 				JOptionPane.showMessageDialog(null, "Contraseña Incorrecta");
+			return false;
 		}
 
 	}

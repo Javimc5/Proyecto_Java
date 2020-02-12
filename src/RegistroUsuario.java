@@ -94,12 +94,12 @@ public class RegistroUsuario extends JFrame {
 		textField.setColumns(10);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(123, 112, 225, 20);
+		textField_2.setBounds(141, 112, 207, 20);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(197, 140, 153, 20);
+		textField_3.setBounds(206, 140, 144, 20);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
@@ -113,7 +113,7 @@ public class RegistroUsuario extends JFrame {
 		contentPane.add(btnCrear);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(79, 81, 270, 23);
+		passwordField.setBounds(99, 80, 252, 23);
 		contentPane.add(passwordField);
 	}
 }
