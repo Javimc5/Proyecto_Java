@@ -12,12 +12,22 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import java.awt.Color;
 import java.awt.SystemColor;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import javax.swing.AbstractListModel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MenuBusqueda extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -62,6 +72,16 @@ public class MenuBusqueda extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					modificarTabla("Select * from restaurante");
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnBuscar.setBounds(317, 65, 89, 23);
 		contentPane.add(btnBuscar);
 		
@@ -69,16 +89,33 @@ public class MenuBusqueda extends JFrame {
 		scrollPane.setBounds(10, 99, 816, 332);
 		contentPane.add(scrollPane);
 		
-		JList list = new JList();
-		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {};
-			public int getSize() {
-				return values.length;
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Nombre", "Direccion", "Ciudad", "Telefono", "Descripcion", "Valoracion"
 			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
+		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(138);
+		table.getColumnModel().getColumn(4).setPreferredWidth(186);
+		scrollPane.setViewportView(table);
+	}
+	
+	public void modificarTabla(String query) throws SQLException {
+		Conexion conexion = new Conexion();
+		Connection cn = conexion.conectar();
+		Statement stm = cn.createStatement();
+		ResultSet rs = stm.executeQuery(query);
+		
+		DefaultTableModel model=new DefaultTableModel(new Object[][] {
+		},
+		new String[] {
+			"Nombre", "Direccion", "Ciudad", "Telefono", "Descripcion", "Valoracion"
 		});
-		scrollPane.setViewportView(list);
+		 while(rs.next()) {
+			 model.addRow(new Object[] {rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(7), rs.getInt(8)});
+		 }
+		 table.setModel(model);
 	}
 }
