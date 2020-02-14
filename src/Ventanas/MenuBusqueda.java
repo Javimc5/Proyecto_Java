@@ -1,3 +1,4 @@
+package Ventanas;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -20,6 +21,9 @@ import java.sql.Statement;
 import javax.swing.AbstractListModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import Conexion.Conexion;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 

@@ -1,8 +1,12 @@
+package Pruebas;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
+
+
+import Conexion.Conexion;
 
 public class TestConexion {
 
@@ -14,7 +18,7 @@ public class TestConexion {
 		while (!sesion) {
 			switch (menuInicial()) {
 			case 1:
-				sesionUsuario();
+				
 				sesion = true;
 				break;
 			case 2:
@@ -52,33 +56,6 @@ public class TestConexion {
 		return opcion = in.nextInt();
 	}
 
-	public static void sesionUsuario() throws SQLException {
-		boolean sesion = false;
-		Scanner in = new Scanner(System.in);
-		Conexion conexion = new Conexion();
-		Connection cn = conexion.conectar();
-		Statement stm = cn.createStatement();
-		ResultSet rs = null;
-		InicioUsuario frame = new InicioUsuario();
-		while (!sesion) {
-			System.out.println("Introduzca su correo: ");
-			String correo = "'" + frame.txtUsuario.getText() + "'";
-			rs = stm.executeQuery("Select * from usuario where correo=" + correo);
-			if (!rs.next()) {
-				System.out.println("Correo invalido");
-			} else {
-				System.out.println("Introduzca su contraseña:");
-				String pass = frame.passwordField.getPassword().toString();
-				String contr = rs.getString(3);
-				if (pass.equals(contr)) {
-					System.out.println("Bienvenido " + rs.getString(4) + "\n\n\n");
-					sesion = true;
-				} else
-					System.out.println("Contraseña invalida");
-			}
-
-		}
-	}
 
 
 
