@@ -34,7 +34,7 @@ public class InicioEmpresa extends JFrame {
 	private JLabel lblNearEat;
 	static JPasswordField passwordField;
 	private JButton btnInicio;
-
+	private static int contInicio=0;
 	/**
 	 * Launch the application.
 	 */
@@ -132,6 +132,11 @@ public class InicioEmpresa extends JFrame {
 		rs = stm.executeQuery("Select * from empresa where correo=" + correo);
 		if (!rs.next()) {
 			JOptionPane.showMessageDialog(null, "Correo Invalido");
+			contInicio++;
+			System.out.println(contInicio);
+			if(contInicio>=3) {
+				frame.setVisible(false);
+			}
 			return false;
 		} else {
 			String pass = passwordField.getText();
@@ -139,8 +144,14 @@ public class InicioEmpresa extends JFrame {
 			if (pass.equals(contr)) {
 				JOptionPane.showMessageDialog(null, "Bienvenido " + rs.getString(5) + "\n\n\n");
 				return true;
-			} else
+			} else {
 				JOptionPane.showMessageDialog(null, "Contraseña Incorrecta");
+				contInicio++;
+				System.out.println(contInicio);
+				if(contInicio>=3) {
+					frame.setVisible(false);
+				}
+				}
 			return false;
 		}
 
