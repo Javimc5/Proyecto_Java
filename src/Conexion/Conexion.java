@@ -15,6 +15,7 @@ public class Conexion {
 	private static String urlDB;
 	private static String usuarioDB;
 	private static String pwdDB;
+	
 
 	public static void main(String[] args) {
 		Properties propiedades = new Properties();
