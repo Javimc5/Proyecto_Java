@@ -1,14 +1,48 @@
 package Conexion;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class Conexion {
 
-	private static final String CONTROLADOR = "com.mysql.jdbc.Driver";
-	private static final String URL = "jdbc:mysql://localhost:3306/neareat";
-	private static final String USUARIO = "root";
-	private static final String CLAVE = "";
+	private static final String CONTROLADOR = "com.mysql.cj.jdbc.Driver";
+	private static String urlDB;
+	private static String usuarioDB;
+	private static String pwdDB;
+
+	public static void main(String[] args) {
+		Properties propiedades = new Properties();
+		InputStream entrada = null;
+		try {
+			File miFichero = new File("config.ini");
+			if (miFichero.exists()) {
+				entrada = new FileInputStream(miFichero);
+				// cargamos el archivo de propiedades
+				propiedades.load(entrada);
+				// obtenemos las propiedades y las imprimimos
+				urlDB = propiedades.getProperty("basedatos");
+				usuarioDB = propiedades.getProperty("usuario");
+				pwdDB = propiedades.getProperty("clave");
+			} else
+				System.err.println("Fichero no encontrado");
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (entrada != null) {
+				try {
+					entrada.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 
 	static {
 		try {
@@ -18,19 +52,19 @@ public class Conexion {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public Connection conectar() {
 		Connection conexion = null;
-		
+
 		try {
-			conexion = DriverManager.getConnection(URL, USUARIO, CLAVE);
+			conexion = DriverManager.getConnection(urlDB, usuarioDB, pwdDB);
 			System.out.println("Conexión OK");
 
 		} catch (SQLException e) {
 			System.out.println("Error en la conexión");
 			e.printStackTrace();
 		}
-		
+
 		return conexion;
 	}
 }
