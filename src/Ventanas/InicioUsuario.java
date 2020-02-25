@@ -57,7 +57,7 @@ public class InicioUsuario extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Create the frame for usuario
 	 */
 	public InicioUsuario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -136,6 +136,14 @@ public class InicioUsuario extends JFrame {
 		btnInicio.setBounds(185, 186, 89, 23);
 		contentPane.add(btnInicio);
 	}
+	
+	/**
+	 * Comprueba usuario y contraseña del usuario
+	 * 
+	 * @return True: si usuario y contraseña son correctos; False: si usuario o
+	 *         contraseña son incorrectos
+	 * @throws SQLException
+	 */
 
 	public static boolean sesionUsuario() throws SQLException {
 		Conexion conexion = new Conexion();
