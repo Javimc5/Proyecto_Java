@@ -1,4 +1,5 @@
 package Ventanas;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
@@ -34,7 +35,8 @@ public class InicioEmpresa extends JFrame {
 	private JLabel lblNearEat;
 	static JPasswordField passwordField;
 	private JButton btnInicio;
-	private static int contInicio=0;
+	private static int contInicio = 0;
+
 	/**
 	 * Launch the application.
 	 */
@@ -52,7 +54,7 @@ public class InicioEmpresa extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Create the frame for empresa
 	 */
 	public InicioEmpresa() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -103,11 +105,12 @@ public class InicioEmpresa extends JFrame {
 		btnInicio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					if(sesionEmpresa()) {
-						MenuBusqueda inicio=new MenuBusqueda();
+					if (sesionEmpresa()) {
+						MenuBusqueda inicio = new MenuBusqueda();
 						inicio.main(null);
 						frame.setVisible(false);
-					};
+					}
+					;
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -115,26 +118,34 @@ public class InicioEmpresa extends JFrame {
 		});
 		btnInicio.setBounds(185, 186, 89, 23);
 		contentPane.add(btnInicio);
-		
+
 		JLabel lblEmpresa = new JLabel("Empresa");
 		lblEmpresa.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		lblEmpresa.setBounds(178, 67, 108, 37);
 		contentPane.add(lblEmpresa);
 	}
 
+	/**
+	 * Comprueba usuario y contraseña de la empresa
+	 * 
+	 * @return True: si usuario y contraseña son correctos; False: si usuario o
+	 *         contraseña son incorrectos
+	 * @throws SQLException
+	 */
+
 	public static boolean sesionEmpresa() throws SQLException {
 		Conexion conexion = new Conexion();
 		Connection cn = conexion.conectar();
 		Statement stm = cn.createStatement();
 		ResultSet rs = null;
-		
+
 		String correo = "'" + txtUsuario.getText() + "'";
 		rs = stm.executeQuery("Select * from empresa where correo=" + correo);
 		if (!rs.next()) {
 			JOptionPane.showMessageDialog(null, "Correo Invalido");
 			contInicio++;
 			System.out.println(contInicio);
-			if(contInicio>=3) {
+			if (contInicio >= 3) {
 				frame.setVisible(false);
 			}
 			return false;
@@ -148,10 +159,10 @@ public class InicioEmpresa extends JFrame {
 				JOptionPane.showMessageDialog(null, "Contraseña Incorrecta");
 				contInicio++;
 				System.out.println(contInicio);
-				if(contInicio>=3) {
+				if (contInicio >= 3) {
 					frame.setVisible(false);
 				}
-				}
+			}
 			return false;
 		}
 
