@@ -35,6 +35,7 @@ public class InicioUsuario extends JFrame {
 	static JPasswordField passwordField;
 	private JButton btnInicio;
 	private static int contInicio=0;
+	public static String correo;
 
 	/**
 	 * Launch the application.
@@ -142,7 +143,7 @@ public class InicioUsuario extends JFrame {
 		Statement stm = cn.createStatement();
 		ResultSet rs = null;
 		
-		String correo = "'" + txtUsuario.getText() + "'";
+		correo = "'" + txtUsuario.getText() + "'";
 		rs = stm.executeQuery("Select * from users where correo=" + correo);
 		if (!rs.next()) {
 			JOptionPane.showMessageDialog(null, "Correo Invalido");

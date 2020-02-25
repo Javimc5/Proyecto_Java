@@ -26,6 +26,8 @@ import Conexion.Conexion;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class MenuBusqueda extends JFrame {
 
@@ -53,6 +55,17 @@ public class MenuBusqueda extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuBusqueda() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowOpened(WindowEvent e) {
+				try {
+					modificarTabla("Select * from restaurante");
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 852, 492);
 		contentPane = new JPanel();
@@ -79,9 +92,13 @@ public class MenuBusqueda extends JFrame {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					modificarTabla("Select * from restaurante");
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
+					if(textField.getText().equals(""))
+						modificarTabla("Select * from restaurante");
+					else {
+						String query="Select * from restaurante where Nombre like '%"+textField.getText()+"%'";
+						modificarTabla(query);
+					}
+				}catch (SQLException e1) {
 					e1.printStackTrace();
 				}
 			}
@@ -104,6 +121,15 @@ public class MenuBusqueda extends JFrame {
 		table.getColumnModel().getColumn(0).setPreferredWidth(138);
 		table.getColumnModel().getColumn(4).setPreferredWidth(186);
 		scrollPane.setViewportView(table);
+		
+		JButton btnModificarUsuario = new JButton("Modificar Usuario");
+		btnModificarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModificarUsuario.main(null);
+			}
+		});
+		btnModificarUsuario.setBounds(650, 56, 176, 32);
+		contentPane.add(btnModificarUsuario);
 	}
 	
 	public void modificarTabla(String query) throws SQLException {
