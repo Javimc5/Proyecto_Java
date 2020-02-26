@@ -35,7 +35,7 @@ public class InicioUsuario extends JFrame {
 	static JPasswordField passwordField;
 	private JButton btnInicio;
 	private static int contInicio=0;
-	public static String correo;
+	public static String correo="";
 
 	/**
 	 * Launch the application.

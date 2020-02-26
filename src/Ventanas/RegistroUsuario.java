@@ -40,6 +40,7 @@ public class RegistroUsuario extends JFrame {
 	private static JPasswordField passwordField;
 	private static JRadioButton rdbtnHombre;
 	private static JRadioButton rdbtnMujer;
+	private JButton btnVolver;
 
 	/**
 	 * Launch the application.
@@ -132,8 +133,7 @@ public class RegistroUsuario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					if(crearUsuario()) {
-						InicioUsuario newFrame=new InicioUsuario();
-						newFrame.main(null);
+						InicioUsuario.main(null);
 						frame.setVisible(false);
 					}
 				} catch (SQLException e1) {
@@ -147,6 +147,16 @@ public class RegistroUsuario extends JFrame {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(99, 80, 252, 23);
 		contentPane.add(passwordField);
+		
+		btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				InicioUsuario.main(null);
+			}
+		});
+		btnVolver.setBounds(10, 11, 89, 23);
+		contentPane.add(btnVolver);
 	}
 
 	public static boolean crearUsuario() throws SQLException {

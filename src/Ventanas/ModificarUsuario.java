@@ -85,11 +85,11 @@ public class ModificarUsuario extends JFrame {
 		contentPane.add(lblUsuario);
 
 		lblNombre = new JLabel("");
-		lblNombre.setBounds(61, 62, 153, 24);
+		lblNombre.setBounds(78, 62, 144, 24);
 		contentPane.add(lblNombre);
 
 		lblPassword = new JLabel("");
-		lblPassword.setBounds(78, 94, 153, 23);
+		lblPassword.setBounds(88, 94, 143, 23);
 		contentPane.add(lblPassword);
 
 		lblTfno = new JLabel("");
@@ -101,11 +101,11 @@ public class ModificarUsuario extends JFrame {
 		contentPane.add(lblFecha);
 		
 		lblNombre_1 = new JLabel("Nombre:");
-		lblNombre_1.setBounds(10, 69, 74, 14);
+		lblNombre_1.setBounds(10, 62, 74, 24);
 		contentPane.add(lblNombre_1);
 		
 		lblContrasea = new JLabel("Contrase\u00F1a:");
-		lblContrasea.setBounds(10, 97, 74, 20);
+		lblContrasea.setBounds(10, 97, 74, 24);
 		contentPane.add(lblContrasea);
 		
 		lblFechaNacimiento = new JLabel("Fecha Nacimiento:");
@@ -113,7 +113,7 @@ public class ModificarUsuario extends JFrame {
 		contentPane.add(lblFechaNacimiento);
 		
 		lblTelefono = new JLabel("Telefono:");
-		lblTelefono.setBounds(10, 143, 74, 23);
+		lblTelefono.setBounds(10, 142, 74, 24);
 		contentPane.add(lblTelefono);
 		
 		textField = new JTextField();
@@ -125,7 +125,7 @@ public class ModificarUsuario extends JFrame {
 		textField_1 = new JTextField();
 		textField_1.setEnabled(false);
 		textField_1.setColumns(10);
-		textField_1.setBounds(290, 100, 153, 24);
+		textField_1.setBounds(290, 94, 153, 24);
 		contentPane.add(textField_1);
 		
 		textField_2 = new JTextField();
@@ -137,7 +137,7 @@ public class ModificarUsuario extends JFrame {
 		textField_3 = new JTextField();
 		textField_3.setEnabled(false);
 		textField_3.setColumns(10);
-		textField_3.setBounds(290, 185, 153, 24);
+		textField_3.setBounds(290, 178, 153, 24);
 		contentPane.add(textField_3);
 		
 		JButton btnModificar = new JButton("Modificar");

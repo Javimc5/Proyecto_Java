@@ -35,6 +35,7 @@ public class MenuBusqueda extends JFrame {
 	private JTextField textField;
 	private JTable table;
 	static MenuBusqueda frame;
+	private JButton btnModificarUsuario;
 
 	/**
 	 * Launch the application.
@@ -59,6 +60,8 @@ public class MenuBusqueda extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
+				if(InicioUsuario.correo.equals(""))
+					btnModificarUsuario.setVisible(false);
 				try {
 					modificarTabla("Select * from restaurante");
 				} catch (SQLException e1) {
@@ -123,7 +126,7 @@ public class MenuBusqueda extends JFrame {
 		table.getColumnModel().getColumn(4).setPreferredWidth(186);
 		scrollPane.setViewportView(table);
 		
-		JButton btnModificarUsuario = new JButton("Modificar Usuario");
+		btnModificarUsuario = new JButton("Modificar Usuario");
 		btnModificarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ModificarUsuario.main(null);

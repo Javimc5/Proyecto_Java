@@ -36,11 +36,12 @@ public class InicioEmpresa extends JFrame {
 	static JPasswordField passwordField;
 	private JButton btnInicio;
 	private static int contInicio = 0;
+	private JButton btnVolver;
 
 	/**
 	 * Launch the application.
 	 */
-	public void main(String[] args) {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -123,6 +124,16 @@ public class InicioEmpresa extends JFrame {
 		lblEmpresa.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		lblEmpresa.setBounds(178, 67, 108, 37);
 		contentPane.add(lblEmpresa);
+		
+		btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				InicioUsuario.main(null);
+			}
+		});
+		btnVolver.setBounds(10, 11, 89, 23);
+		contentPane.add(btnVolver);
 	}
 
 	/**
