@@ -132,7 +132,7 @@ public class RegistroUsuario extends JFrame {
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					if(crearUsuario()) {
+					if (crearUsuario()) {
 						InicioUsuario.main(null);
 						frame.setVisible(false);
 					}
@@ -147,7 +147,7 @@ public class RegistroUsuario extends JFrame {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(99, 80, 252, 23);
 		contentPane.add(passwordField);
-		
+
 		btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -164,7 +164,7 @@ public class RegistroUsuario extends JFrame {
 		Connection cn = conexion.conectar();
 		Statement stm = cn.createStatement();
 		ResultSet rs = null;
-		
+
 		String correo = textField.getText();
 		rs = stm.executeQuery("Select * from users where correo='" + correo + "'");
 		if (!rs.next()) {
@@ -174,27 +174,28 @@ public class RegistroUsuario extends JFrame {
 				String fecha_nac = textField_3.getText();
 				long tlfno = Integer.parseInt(textField_4.getText());
 				int sexo = 0;
-				if(rdbtnHombre.isSelected())
+				if (rdbtnHombre.isSelected())
 					sexo = 0;
-				if(rdbtnMujer.isSelected())
-					sexo=1;
+				if (rdbtnMujer.isSelected())
+					sexo = 1;
 				try {
 					String query = "Insert into users (correo, password, Nombre, fecha_nac, num_tfno, sexo) values('"
 							+ correo + "','" + pass + "','" + nombre + "','" + fecha_nac + "'," + tlfno + "," + sexo
 							+ ")";
 					stm.executeUpdate(query);
-					JOptionPane.showMessageDialog(null,"Cuenta creada con exito.");
+					JOptionPane.showMessageDialog(null, "Cuenta creada con exito.");
 					return true;
 				} catch (SQLException e) {
-					JOptionPane.showMessageDialog(null,"Error al crear");
+					JOptionPane.showMessageDialog(null, "Error al crear");
 					return false;
 				}
 			} else {
-				JOptionPane.showMessageDialog(null,"Contraseña con formato no permitido");
+				JOptionPane.showMessageDialog(null,
+						"Contraseña con formato no permitido. Introduzca una contraseña entre 7 y 21 caracteres");
 				return false;
 			}
 		} else {
-			JOptionPane.showMessageDialog(null,"Correo ya registrado.");
+			JOptionPane.showMessageDialog(null, "Correo ya registrado.");
 			return false;
 		}
 

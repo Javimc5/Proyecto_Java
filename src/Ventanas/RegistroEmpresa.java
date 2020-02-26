@@ -105,7 +105,7 @@ public class RegistroEmpresa extends JFrame {
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					if(crearEmpresa()) {
+					if (crearEmpresa()) {
 						InicioEmpresa.main(null);
 						frame.dispose();
 					}
@@ -173,16 +173,17 @@ public class RegistroEmpresa extends JFrame {
 					JOptionPane.showMessageDialog(null, "Cuenta de empresa creada con exito.");
 					return true;
 				} catch (SQLException e) {
-					JOptionPane.showMessageDialog(null, "Error al crear la cuenta de su empresa");
+					JOptionPane.showMessageDialog(null, "Error al crear la cuenta de empresa.");
 					return false;
 				}
 			} else {
-				JOptionPane.showMessageDialog(null, "Contrasenia con formato no permitido");
+				JOptionPane.showMessageDialog(null,
+						"Contraseña con formato no permitido. Por favor introduzca una contraseña entre 7 y 21 caracteres.");
 				return false;
 			}
 
 		} else {
-			JOptionPane.showMessageDialog(null, "Correo repetido! Ya se ha creado uno");
+			JOptionPane.showMessageDialog(null, "Correo ya registrado.");
 			return false;
 		}
 	}
