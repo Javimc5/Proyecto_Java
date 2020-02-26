@@ -88,7 +88,7 @@ public class MenuBusqueda extends JFrame {
 		contentPane.add(lblBuscar);
 		
 		textField = new JTextField();
-		textField.setBounds(51, 66, 256, 22);
+		textField.setBounds(70, 65, 286, 22);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
@@ -108,7 +108,7 @@ public class MenuBusqueda extends JFrame {
 				}
 			}
 		});
-		btnBuscar.setBounds(317, 65, 89, 23);
+		btnBuscar.setBounds(366, 65, 89, 23);
 		contentPane.add(btnBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();

@@ -85,19 +85,19 @@ public class ModificarUsuario extends JFrame {
 		contentPane.add(lblUsuario);
 
 		lblNombre = new JLabel("");
-		lblNombre.setBounds(78, 62, 144, 24);
+		lblNombre.setBounds(67, 62, 144, 24);
 		contentPane.add(lblNombre);
 
 		lblPassword = new JLabel("");
-		lblPassword.setBounds(88, 94, 143, 23);
+		lblPassword.setBounds(88, 97, 143, 23);
 		contentPane.add(lblPassword);
 
 		lblTfno = new JLabel("");
-		lblTfno.setBounds(78, 143, 153, 24);
+		lblTfno.setBounds(67, 143, 153, 24);
 		contentPane.add(lblTfno);
 
 		lblFecha = new JLabel("");
-		lblFecha.setBounds(124, 178, 153, 24);
+		lblFecha.setBounds(116, 178, 153, 24);
 		contentPane.add(lblFecha);
 		
 		lblNombre_1 = new JLabel("Nombre:");
