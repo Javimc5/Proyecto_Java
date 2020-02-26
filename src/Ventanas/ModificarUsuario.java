@@ -39,6 +39,7 @@ public class ModificarUsuario extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private static ModificarUsuario frame;
 
 	/**
 	 * Launch the application.
@@ -47,7 +48,7 @@ public class ModificarUsuario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ModificarUsuario frame = new ModificarUsuario();
+					frame = new ModificarUsuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -71,7 +72,7 @@ public class ModificarUsuario extends JFrame {
 				}
 			}
 		});
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 512, 317);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -161,6 +162,31 @@ public class ModificarUsuario extends JFrame {
 		});
 		btnModificar.setBounds(312, 220, 116, 33);
 		contentPane.add(btnModificar);
+		
+		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					eliminar();
+					frame.setVisible(false);
+					InicioUsuario.main(null);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnEliminar.setBounds(188, 220, 114, 33);
+		contentPane.add(btnEliminar);
+	}
+	
+	public void eliminar() throws SQLException {
+		Conexion conexion = new Conexion();
+		Connection cn = conexion.conectar();
+		Statement stm = cn.createStatement();
+		String query="delete from users where correo="+InicioUsuario.correo;
+		stm.executeUpdate(query);
+		
 	}
 	
 	public void modificar() throws SQLException {
