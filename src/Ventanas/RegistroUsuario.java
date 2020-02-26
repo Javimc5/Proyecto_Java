@@ -186,12 +186,12 @@ public class RegistroUsuario extends JFrame {
 					JOptionPane.showMessageDialog(null, "Cuenta creada con exito.");
 					return true;
 				} catch (SQLException e) {
-					JOptionPane.showMessageDialog(null, "Error al crear");
+					JOptionPane.showMessageDialog(null, "Error al crear cuenta.");
 					return false;
 				}
 			} else {
 				JOptionPane.showMessageDialog(null,
-						"Contraseña con formato no permitido. Introduzca una contraseña entre 7 y 21 caracteres");
+						"Contraseña con formato no permitido. Introduzca una contraseña entre 7 y 21 caracteres.");
 				return false;
 			}
 		} else {
