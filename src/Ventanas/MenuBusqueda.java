@@ -129,8 +129,18 @@ public class MenuBusqueda extends JFrame {
 				ModificarUsuario.main(null);
 			}
 		});
-		btnModificarUsuario.setBounds(650, 56, 176, 32);
+		btnModificarUsuario.setBounds(650, 11, 176, 32);
 		contentPane.add(btnModificarUsuario);
+		
+		JButton btnCerrarSesion = new JButton("Cerrar Sesion");
+		btnCerrarSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				InicioUsuario.main(null);
+			}
+		});
+		btnCerrarSesion.setBounds(650, 54, 176, 32);
+		contentPane.add(btnCerrarSesion);
 	}
 	
 	public void modificarTabla(String query) throws SQLException {
