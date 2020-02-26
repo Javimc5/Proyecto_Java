@@ -56,7 +56,7 @@ public class Conexion {
 
 	public Connection conectar() {
 		Connection conexion = null;
-
+		main(null);
 		try {
 			conexion = DriverManager.getConnection(urlDB, usuarioDB, pwdDB);
 			System.out.println("Conexión OK");
