@@ -71,7 +71,7 @@ public class TestConexion {
 		while (!creado) {
 			System.out.println("Introduzca un correo para crear la cuenta: ");
 			String correo = in.next();
-			rs = stm.executeQuery("Select * from usuario where correo='" + correo + "'");
+			rs = stm.executeQuery("Select * from usuario where USR='" + correo + "'");
 			if (!rs.next()) {
 				System.out.println("Introduzca una contraseña de 8 a 20 caracteres: ");
 				String pass = in.next();
@@ -86,7 +86,7 @@ public class TestConexion {
 					System.out.println("Introduzca su sexo (1.Hombre - 2.Mujer): ");
 					int sexo = in.nextInt() - 1;
 					try {
-						String query = "Insert into usuario (correo, password, Nombre, fecha_nac, num_tfno, sexo) values('"
+						String query = "Insert into usuario (USR, PWD, Nombre, fecha_nac, num_tfno, sexo) values('"
 								+ correo + "','" + pass + "','" + nombre + "','" + fecha_nac + "'," + tlfno + "," + sexo
 								+ ")";
 						stm.executeUpdate(query);
@@ -112,7 +112,7 @@ public class TestConexion {
 		while (!creado) {
 			System.out.println("Introduzca un correo para crear la cuenta de empresa: ");
 			String correo = in.next();
-			rs = stm.executeQuery("Select * from empresa where correo='" + correo + "'");
+			rs = stm.executeQuery("Select * from empresa where USR='" + correo + "'");
 			if (!rs.next()) {
 				System.out.println("Introduzca una contraseña de 8 a 20 caracteres: ");
 				String pass = in.next();
@@ -129,7 +129,7 @@ public class TestConexion {
 					System.out.println("Introduzca su nombre completo: ");
 					String nombre = in.nextLine();
 					try {
-						String query = "Insert into empresa (correo, password, CIF, Nombre_empresa, tlfno, nom_titular) values('"
+						String query = "Insert into empresa (USR, PWD, CIF, Nombre_empresa, tlfno, nom_titular) values('"
 								+ correo + "','" + pass + "','" + cif + "','" + nom_emp + "'," + tlfno + ",'" + nombre
 								+ "')";
 						stm.executeUpdate(query);

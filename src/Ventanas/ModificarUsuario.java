@@ -185,7 +185,7 @@ public class ModificarUsuario extends JFrame {
 		Conexion conexion = new Conexion();
 		Connection cn = conexion.conectar();
 		Statement stm = cn.createStatement();
-		String query="delete from users where correo="+InicioUsuario.correo;
+		String query="delete from users where USR="+InicioUsuario.correo;
 		stm.executeUpdate(query);
 		
 	}
@@ -210,7 +210,7 @@ public class ModificarUsuario extends JFrame {
 		if(textField_3.getText().equals("")) fecha=lblFecha.getText();
 		else fecha=textField_3.getText();
 		
-		String query="update users set password='"+password+"', Nombre='"+nombre+"', fecha_nac='"+fecha+"', num_tfno="+tfno+" where correo="+InicioUsuario.correo;
+		String query="update users set PWD='"+password+"', Nombre='"+nombre+"', fecha_nac='"+fecha+"', num_tfno="+tfno+" where USR="+InicioUsuario.correo;
 		stm.executeUpdate(query);
 		textField.setText("");
 		textField.setEnabled(false);
@@ -227,7 +227,7 @@ public class ModificarUsuario extends JFrame {
 		Connection cn = conexion.conectar();
 		Statement stm = cn.createStatement();
 		ResultSet rs = null;
-		rs = stm.executeQuery("Select * from users where correo=" + InicioUsuario.correo);
+		rs = stm.executeQuery("Select * from users where USR=" + InicioUsuario.correo);
 		while (rs.next()) {
 			lblNombre.setText(rs.getString(4));
 			lblPassword.setText(rs.getString(3));

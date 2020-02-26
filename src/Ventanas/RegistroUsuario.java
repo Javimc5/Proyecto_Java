@@ -166,7 +166,7 @@ public class RegistroUsuario extends JFrame {
 		ResultSet rs = null;
 
 		String correo = textField.getText();
-		rs = stm.executeQuery("Select * from users where correo='" + correo + "'");
+		rs = stm.executeQuery("Select * from users where USR='" + correo + "'");
 		if (!rs.next()) {
 			String pass = passwordField.getText();
 			if (pass.length() < 21 && pass.length() > 7) {
@@ -179,7 +179,7 @@ public class RegistroUsuario extends JFrame {
 				if (rdbtnMujer.isSelected())
 					sexo = 1;
 				try {
-					String query = "Insert into users (correo, password, Nombre, fecha_nac, num_tfno, sexo) values('"
+					String query = "Insert into users (USR, PWD, Nombre, fecha_nac, num_tfno, sexo) values('"
 							+ correo + "','" + pass + "','" + nombre + "','" + fecha_nac + "'," + tlfno + "," + sexo
 							+ ")";
 					stm.executeUpdate(query);

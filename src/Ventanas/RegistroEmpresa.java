@@ -150,6 +150,14 @@ public class RegistroEmpresa extends JFrame {
 		contentPane.add(btnVolver);
 	}
 
+	
+	/**
+	 * Metodo para crear usuario mediante un insert a la base de datos.
+	 * Comprueba que no existe un usuario con el correo introducido y procede a la creacion del usuario
+	 * 
+	 * @return true: Si crea la cuenta; False: Si no consigue crear la cuenta.
+	 * @throws SQLException
+	 */
 	public static boolean crearEmpresa() throws SQLException {
 		Conexion conexion = new Conexion();
 		Connection cn = conexion.conectar();
@@ -157,7 +165,7 @@ public class RegistroEmpresa extends JFrame {
 		ResultSet rs = null;
 
 		String correo = textField.getText();
-		rs = stm.executeQuery("Select * from empresa where correo='" + correo + "'");
+		rs = stm.executeQuery("Select * from empresa where USR='" + correo + "'");
 		if (!rs.next()) {
 			String pass = passwordField.getText();
 			if (pass.length() < 21 && pass.length() > 7) {
@@ -166,7 +174,7 @@ public class RegistroEmpresa extends JFrame {
 				String nom_titular = textField_1.getText();
 				long tlfno = Integer.parseInt(textField_4.getText());
 				try {
-					String query = "Insert into empresa (correo, password, CIF, nombre_empresa, tlfno, nom_titular) values('"
+					String query = "Insert into empresa (USR, PWD, CIF, nombre_empresa, tlfno, nom_titular) values('"
 							+ correo + "','" + pass + "','" + CIF + "','" + nombre_empresa + "'," + tlfno + ",'"
 							+ nom_titular + "')";
 					stm.executeUpdate(query);
