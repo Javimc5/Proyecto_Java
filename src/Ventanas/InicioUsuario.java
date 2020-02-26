@@ -72,7 +72,7 @@ public class InicioUsuario extends JFrame {
 		contentPane.add(txtUsuario);
 		txtUsuario.setColumns(10);
 
-		lblUsuario = new JLabel("Usuario:");
+		lblUsuario = new JLabel("Correo:");
 		lblUsuario.setBounds(55, 135, 72, 14);
 		contentPane.add(lblUsuario);
 
