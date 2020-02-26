@@ -169,6 +169,7 @@ public class ModificarUsuario extends JFrame {
 				try {
 					eliminar();
 					frame.setVisible(false);
+					MenuBusqueda.frame.setVisible(false);
 					InicioUsuario.main(null);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block

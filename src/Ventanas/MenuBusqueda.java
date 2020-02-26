@@ -34,6 +34,7 @@ public class MenuBusqueda extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTable table;
+	static MenuBusqueda frame;
 
 	/**
 	 * Launch the application.
@@ -42,7 +43,7 @@ public class MenuBusqueda extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuBusqueda frame = new MenuBusqueda();
+					frame = new MenuBusqueda();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
