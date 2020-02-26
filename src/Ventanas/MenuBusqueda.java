@@ -146,6 +146,8 @@ public class MenuBusqueda extends JFrame {
 		contentPane.add(btnCerrarSesion);
 	}
 	
+	
+	
 	public void modificarTabla(String query) throws SQLException {
 		Conexion conexion = new Conexion();
 		Connection cn = conexion.conectar();

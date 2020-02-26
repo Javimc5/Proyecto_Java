@@ -59,7 +59,7 @@ public class RegistroUsuario extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Crea el frame de registro de usuario.
 	 */
 	public RegistroUsuario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -158,6 +158,14 @@ public class RegistroUsuario extends JFrame {
 		btnVolver.setBounds(10, 11, 89, 23);
 		contentPane.add(btnVolver);
 	}
+	
+	/**
+	 * Metodo para crear usuario mediante un insert a la base de datos. <br>
+	 * Comprueba que no existe un usuario con el correo(USR) introducido y procede a la creacion del usuario.
+	 * 
+	 * @return true: Si crea la cuenta. <br>False: Si no consigue crear la cuenta.
+	 * @throws SQLException
+	 */
 
 	public static boolean crearUsuario() throws SQLException {
 		Conexion conexion = new Conexion();

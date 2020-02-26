@@ -50,7 +50,7 @@ public class RegistroEmpresa extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Crea el frame que permite registrar una empresa
 	 */
 	public RegistroEmpresa() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -152,10 +152,10 @@ public class RegistroEmpresa extends JFrame {
 
 	
 	/**
-	 * Metodo para crear usuario mediante un insert a la base de datos.
-	 * Comprueba que no existe un usuario con el correo introducido y procede a la creacion del usuario
+	 * Metodo para crear una empresa mediante un insert a la base de datos. <br>
+	 * Comprueba que no existe una empresa con el correo(USR) introducido y procede a la creacion de la empresa
 	 * 
-	 * @return true: Si crea la cuenta; False: Si no consigue crear la cuenta.
+	 * @return true: Si crea la cuenta. <br> False: Si no consigue crear la cuenta.
 	 * @throws SQLException
 	 */
 	public static boolean crearEmpresa() throws SQLException {

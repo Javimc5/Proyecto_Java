@@ -190,6 +190,18 @@ public class ModificarUsuario extends JFrame {
 		
 	}
 	
+	
+	/**
+	 * Metodo que permite la modificación de distintos campos de tu usuario <br> 
+	 * Entre ellos permite la modificacion de: <br>
+	 * -nombre <br>
+	 * -Contraseña <br>
+	 * -Telefono <br>
+	 * -fecha de nacimiento
+	 * 
+	 * @throws SQLException
+	 */
+	
 	public void modificar() throws SQLException {
 		Conexion conexion = new Conexion();
 		Connection cn = conexion.conectar();
@@ -222,6 +234,15 @@ public class ModificarUsuario extends JFrame {
 		textField_3.setEnabled(false);
 	}
 	
+	
+	/**
+	 * Metodo que sirve para comprobar los campos asocidos a tu usuario: <br>
+	 * .Nombre <br>
+	 * .Contraseña <br>
+	 * .Telefono <br>
+	 * .Fecha de nacimiento
+	 * @throws SQLException
+	 */
 	public void rellenarUsuario() throws SQLException {
 		Conexion conexion = new Conexion();
 		Connection cn = conexion.conectar();

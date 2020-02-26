@@ -151,7 +151,7 @@ public class InicioEmpresa extends JFrame {
 		ResultSet rs = null;
 
 		String correo = "'" + txtUsuario.getText() + "'";
-		rs = stm.executeQuery("Select * from empresa where correo=" + correo);
+		rs = stm.executeQuery("Select * from empresa where USR=" + correo);
 		if (!rs.next()) {
 			JOptionPane.showMessageDialog(null, "Correo Invalido");
 			contInicio++;
