@@ -85,11 +85,11 @@ public class ModificarUsuario extends JFrame {
 		contentPane.add(lblUsuario);
 
 		lblNombre = new JLabel("");
-		lblNombre.setBounds(78, 62, 153, 24);
+		lblNombre.setBounds(61, 62, 153, 24);
 		contentPane.add(lblNombre);
 
 		lblPassword = new JLabel("");
-		lblPassword.setBounds(88, 97, 153, 23);
+		lblPassword.setBounds(78, 94, 153, 23);
 		contentPane.add(lblPassword);
 
 		lblTfno = new JLabel("");
@@ -105,15 +105,15 @@ public class ModificarUsuario extends JFrame {
 		contentPane.add(lblNombre_1);
 		
 		lblContrasea = new JLabel("Contrase\u00F1a:");
-		lblContrasea.setBounds(10, 103, 74, 14);
+		lblContrasea.setBounds(10, 97, 74, 20);
 		contentPane.add(lblContrasea);
 		
 		lblFechaNacimiento = new JLabel("Fecha Nacimiento:");
-		lblFechaNacimiento.setBounds(10, 188, 116, 14);
+		lblFechaNacimiento.setBounds(10, 178, 116, 24);
 		contentPane.add(lblFechaNacimiento);
 		
 		lblTelefono = new JLabel("Telefono:");
-		lblTelefono.setBounds(10, 143, 74, 14);
+		lblTelefono.setBounds(10, 143, 74, 23);
 		contentPane.add(lblTelefono);
 		
 		textField = new JTextField();
