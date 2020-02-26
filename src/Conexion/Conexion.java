@@ -24,9 +24,9 @@ public class Conexion {
 			File miFichero = new File("config.ini");
 			if (miFichero.exists()) {
 				entrada = new FileInputStream(miFichero);
-				// cargamos el archivo de propiedades
+				// cargamos el archivo de configuración con los datos de la base de datos
 				propiedades.load(entrada);
-				// obtenemos las propiedades y las imprimimos
+				// obtenemos las propiedades y asignamos dichos valores a sus variables
 				urlDB = propiedades.getProperty("basedatos");
 				usuarioDB = propiedades.getProperty("usuario");
 				pwdDB = propiedades.getProperty("clave");
