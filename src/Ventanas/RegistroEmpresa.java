@@ -174,6 +174,7 @@ public class RegistroEmpresa extends JFrame {
 				String nom_titular = textField_1.getText();
 				long tlfno = Integer.parseInt(textField_4.getText());
 				try {
+					//Insert en empresa para introducir un nuevo usuario con los datos introducidos en ventana
 					String query = "Insert into empresa (USR, PWD, CIF, nombre_empresa, tlfno, nom_titular) values('"
 							+ correo + "','" + pass + "','" + CIF + "','" + nombre_empresa + "'," + tlfno + ",'"
 							+ nom_titular + "')";

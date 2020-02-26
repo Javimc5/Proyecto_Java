@@ -181,10 +181,17 @@ public class ModificarUsuario extends JFrame {
 		contentPane.add(btnEliminar);
 	}
 	
+	/**
+	 * Metodo que permite la eliminacion del usuario<br> 
+	 * que se hallaba con la sesion iniciada <br>
+	 * 
+	 * @throws SQLException
+	 */
 	public void eliminar() throws SQLException {
 		Conexion conexion = new Conexion();
 		Connection cn = conexion.conectar();
 		Statement stm = cn.createStatement();
+		//Delete en users del usuariop con el que iniciaste sesion para borrar el usuario
 		String query="delete from users where USR="+InicioUsuario.correo;
 		stm.executeUpdate(query);
 		
@@ -222,6 +229,7 @@ public class ModificarUsuario extends JFrame {
 		if(textField_3.getText().equals("")) fecha=lblFecha.getText();
 		else fecha=textField_3.getText();
 		
+		//Update en la tabla users para actualizar los datos que desees modificar
 		String query="update users set PWD='"+password+"', Nombre='"+nombre+"', fecha_nac='"+fecha+"', num_tfno="+tfno+" where USR="+InicioUsuario.correo;
 		stm.executeUpdate(query);
 		textField.setText("");
@@ -236,7 +244,8 @@ public class ModificarUsuario extends JFrame {
 	
 	
 	/**
-	 * Metodo que sirve para comprobar los campos asocidos a tu usuario: <br>
+	 * Metodo que sirve para comprobar los campos asocidos a tu usuario <br>
+	 * e imprimirlos en JLable
 	 * .Nombre <br>
 	 * .Contraseña <br>
 	 * .Telefono <br>

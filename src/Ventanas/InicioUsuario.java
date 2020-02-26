@@ -152,6 +152,7 @@ public class InicioUsuario extends JFrame {
 		ResultSet rs = null;
 		
 		correo = "'" + txtUsuario.getText() + "'";
+		//Select para seleccionar en la tabla users el usuario al que le corresponde el correo a comprobar para iniciar sesion
 		rs = stm.executeQuery("Select * from users where USR=" + correo);
 		if (!rs.next()) {
 			JOptionPane.showMessageDialog(null, "Correo Invalido");

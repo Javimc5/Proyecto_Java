@@ -187,6 +187,7 @@ public class RegistroUsuario extends JFrame {
 				if (rdbtnMujer.isSelected())
 					sexo = 1;
 				try {
+					//Insert en users para introducir un nuevo usuario con los datos introducidos en ventana
 					String query = "Insert into users (USR, PWD, Nombre, fecha_nac, num_tfno, sexo) values('"
 							+ correo + "','" + pass + "','" + nombre + "','" + fecha_nac + "'," + tlfno + "," + sexo
 							+ ")";

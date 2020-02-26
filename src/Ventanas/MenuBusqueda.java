@@ -99,6 +99,7 @@ public class MenuBusqueda extends JFrame {
 					if(textField.getText().equals(""))
 						modificarTabla("Select * from restaurante");
 					else {
+						//Select para recibir los datos de todos los restaurantes que correspondan con la busqueda para rellenar la tabla
 						String query="Select * from restaurante where Nombre like '%"+textField.getText()+"%'";
 						modificarTabla(query);
 					}
@@ -146,7 +147,12 @@ public class MenuBusqueda extends JFrame {
 		contentPane.add(btnCerrarSesion);
 	}
 	
-	
+	/**
+	 * Metodo que segun la busqueda modifica la tabla <br> 
+	 * de restaurantes<br>
+	 *
+	 * @throws SQLException
+	 */
 	
 	public void modificarTabla(String query) throws SQLException {
 		Conexion conexion = new Conexion();
